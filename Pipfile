@@ -1,0 +1,14 @@
+[[source]]
+url = "https://mirror-pypi.runflare.com/simple"
+verify_ssl = false
+name = "pip_conf_index_global"
+
+[packages]
+lupa = "*"
+django = "*"
+django-ninja = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
