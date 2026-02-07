@@ -22,9 +22,14 @@ Sandboxing: Execute untrusted logic safely within a controlled environment.
 
 ## Key Features 🚀
 ⚡ Lua Runtime Integration: Uses lupa to execute high-performance Lua scripts within Python.
-
 🥷 Django Ninja Support: Seamless integration with modern async-ready APIs.
-
 🧠 Smart Caching: Implements intelligent caching (via Redis/Memcached) to prevent re-evaluating Lua scripts for every request (hashed by user + document + time).
-
 🔍 Attribute Injection: Automatically injects User and Document attributes into the Lua context.
+
+
+## 🛠️ How It Works
+Request Interception: The @policy_check decorator intercepts the request.
+Context Building: Python gathers necessary data (User role, Document stats, Time).
+Cache Lookup: Checks if a decision was already made for this specific context recently.
+Lua Execution: If not cached, the can_execute function (stored in DB) is run by the embedded Lua engine.
+Decision: The boolean result determines access.
